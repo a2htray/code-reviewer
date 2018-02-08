@@ -1,0 +1,18 @@
+{
+  "projects": [
+    {
+      "name": "cn-haskell-book",
+      "git_url": "https://github.com/a2htray/cn-haskell-book",
+      "members": [
+        "xxxx@163.com",
+        "xxxx@gmail.com"
+      ]
+    }
+  ],
+  "email": {
+    "address": "xxxxx@163.com",
+    "password": "xxxxxx",
+    "server": "smtp.163.com",
+    "port": 25
+  }
+}
