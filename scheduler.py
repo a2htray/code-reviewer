@@ -12,6 +12,7 @@ import lib
 
 from commit import Commit
 from project import Project
+from command import command_leader
 
 parser = argparse.ArgumentParser(description="Code Review Scheduler Program")
 parser.add_argument("-n", nargs="?", type=int, default=1, help="Number of days to look for log.")
@@ -43,9 +44,11 @@ def current_project(name):
 
 project = current_project(p)
 
-print project
-exit(-1)
+printer.display("******** Doing project checkout *********")
 
+project.update()
+
+exit(-1)
 
 def process_commits():
     cmd = "cd ../" + project.name + "&& git log --all --since=" + str(no_days) + ".day --name-status"
@@ -133,7 +136,6 @@ def scheduler_review_request(commits):
         send_email(reviewer, subject, body)
 
 
-print "******** Doing project checkout *********"
 
 if os.path.isdir("../" + project):
     print lib.execute_cmd("cd " + "../" + project + "&& git pull")
