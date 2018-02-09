@@ -1,7 +1,7 @@
 
 # Project summary
 
-It's a practice for making much more modular program. Following the tutorial about `[Code Reviewer](https://code.tutsplus.com/series/building-a-python-code-review-scheduler--cms-1157)`
+It's a practice for making much more modular program. Following the tutorial about [Code Reviewer](https://code.tutsplus.com/series/building-a-python-code-review-scheduler--cms-1157)
 and adding some personal feature, that are bit nice point.
 
 
