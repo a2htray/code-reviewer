@@ -14,22 +14,17 @@ class CommandLeader(object):
         return self
 
     def add_command(self, command):
-        assert type(command) == Command
         if isinstance(command, Command):
-            print 1
             self.commands.append(command)
         elif isinstance(command, list):
-            print 2
-            self.commands += self.commands
+            self.commands += command
 
         return self
 
     def _get_commands(self):
-
-        return ' && '.join(self.commands)
+        return ' && '.join(map(lambda command: command.get_cmd(), self.commands))
 
     def execute(self):
-
         resp = os.popen(self._get_commands()).read()
 
         return resp
@@ -44,7 +39,6 @@ class Command(object):
 
 
 class CdCommand(Command):
-
     CMD = 'cd'
 
     def __init__(self, path):
@@ -55,7 +49,6 @@ class CdCommand(Command):
 
 
 class GitPullCommand(Command):
-
     CMD = 'git pull'
 
     def get_cmd(self):
@@ -71,5 +64,17 @@ class GitCloneCommand(Command):
 
     def get_cmd(self):
         return self.CMD + ' ' + self.git_url + ' ' + self.alias_path
+
+
+class GitLogCommand(Command):
+    CMD = 'git log'
+
+    def __init__(self, since=5, with_name_status=True):
+        self.since = since
+        self.with_name_status = with_name_status
+
+    def get_cmd(self):
+        return self.CMD + ' --all --since=' + str(self.since) + '.day ' + ('--name-status' if self.with_name_status else '')
+
 
 command_leader = CommandLeader()

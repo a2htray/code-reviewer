@@ -1,15 +1,18 @@
 # -*- coding:utf-8 -*-
 
 
-
-
 class Mail:
+    SERVER = None
 
-    def __init__(self, _from, to, subject, content):
-        self._from = _from
-        self.to = to
-        self.subject = subject
-        self.content = content
+    def send(self, _from, to, subject, content):
+        header = "From: " + _from + "\n"
+        header += "To: " + to + "\n"
+        header += "Subject: " + subject + "\n"
+        header += "\n"
+        header += content
 
+        self.SERVER.sendmail(_from, to, header)
 
+    def set_server(self, server):
+        self.SERVER = server
 

@@ -28,7 +28,7 @@ class JsonParser(CfgParser):
     def load(self):
         with open(self.file_path) as cfg_file:
             self.main_config = json.load(cfg_file)
-        print self.main_config
+
         # the variant mustn't be None
         assert self.main_config
 
