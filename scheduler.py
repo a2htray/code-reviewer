@@ -1,18 +1,15 @@
 # -*- coding:utf-8 -*-
 
+"""the main startup script file"""
+
 import argparse
-import json
-import os
-import re
 import random
 import time
 import smtplib
 
 import lib
 
-from commit import Commit
 from project import Project
-from command import command_leader
 from mail import Mail
 
 parser = argparse.ArgumentParser(description="Code Review Scheduler Program")
@@ -36,12 +33,17 @@ printer.display("Processing the scheduler against project " + p + " ...")
 
 
 def current_project(name):
-    for p in config.get('projects'):
+    for pr in config.get('projects'):
         if p['name'] == name:
-            git_url = p['git_url']
-            members = p['members']
+            git_url = pr['git_url']
+            members = pr['members']
 
-            return Project(name=name, git_url=git_url, members=members, sys_path='/'.join([args.d, sys_project_name]))
+            return Project(
+                name=name,
+                git_url=git_url,
+                members=members,
+                sys_path='/'.join([args.d, sys_project_name])
+            )
 
 
 project = current_project(p)
@@ -61,9 +63,9 @@ mail.set_server(mail_server)
 def select_reviewer(author, group):
     if author in group:
         group.remove(author)
-    reviewer = random.choice(group)
+    _reviewer = random.choice(group)
 
-    return reviewer
+    return _reviewer
 
 
 printer.display('Processing the scheduler against project " + project + " ...')
@@ -81,6 +83,3 @@ for commit in project.commits:
     mail.send(_from=FROM_EMAIL, to=reviewer, subject=subject, content=body + commit.format())
 
 printer.display('***Done ****')
-
-
-

@@ -1,4 +1,7 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""the project model"""
 
 import os
 import re
@@ -47,7 +50,6 @@ class Project(object):
         ]).execute()
 
         self._process_commits(resp)
-
 
     def _process_commits(self, resp):
         """

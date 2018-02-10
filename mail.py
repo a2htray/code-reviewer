@@ -1,4 +1,7 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""Mail Model"""
 
 
 class Mail:

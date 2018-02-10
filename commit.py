@@ -1,4 +1,7 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""the commit Model"""
 
 
 class Commit:

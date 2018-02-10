@@ -1,4 +1,7 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""configuration parser"""
 
 import os
 import json

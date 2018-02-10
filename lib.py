@@ -1,4 +1,7 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""help function collection"""
 
 import os
 import alias

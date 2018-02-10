@@ -1,4 +1,8 @@
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+"""outputs definition, such as shell standard output"""
+
 
 from abc import ABCMeta, abstractmethod
 
